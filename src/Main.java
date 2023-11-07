@@ -1,5 +1,7 @@
 import leetcode_1_1000.Leetcode_187;
+import leetcode_1_1000.Leetcode_318;
 import leetcode_2000_3000.Leetcode_2003;
+import leetcode_2000_3000.Leetcode_2586;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,10 +30,21 @@ public class Main {
         int[] parent=new int[]{-1,0,1,0,3,3};
         int[] nums=new int[]{5,4,6,2,1,3};
 
+//
+//        Leetcode_2003 leetcode_2003=new Leetcode_2003();
+//        System.out.println(Arrays.toString(leetcode_2003.smallestMissingValueSubtree(parent, nums)));
 
-        Leetcode_2003 leetcode_2003=new Leetcode_2003();
-        System.out.println(Arrays.toString(leetcode_2003.smallestMissingValueSubtree(parent, nums)));
+        String[] stringArray=new String[]{"hey","aeo","mu","ooo","artro"};
+
+
+        Leetcode_2586 leetcode2586=new Leetcode_2586();
+        System.out.println(leetcode2586.vowelStrings(stringArray,1,4));
+
+
+
     }
+
+
 
     public static int countPoints(String rings) {
         Map<Integer, HashSet<Character>> resultMap=new HashMap<>();

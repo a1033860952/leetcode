@@ -1,5 +1,7 @@
 package leetcode_2000_3000;
 
+import java.util.*;
+
 public class Leetcode_2127 {
 
 
@@ -31,6 +33,89 @@ public class Leetcode_2127 {
         //然后一直反着找，看看找到最远的那个节点时，整条线上的节点数是多少，另一个节点也是一样的，以此类推，反着找
         //最后两个节点都找到自己最长线的长度，然后加起来，就是一个题目的答案了
         //注意可能有多个基环长度为2的基环树（？？  不确定 保持怀疑）
+
+
+
+        //首先我们可以使用拓扑排序将基环和树枝区分开，拓扑排序是取入度为0的节点，而基环是一个环，环内的节点不会存在入度为0的，毕竟相互依赖了
+
+        //先计算每个节点的入度
+        int length = favorite.length;
+        int[] penetration=new int[length];
+        for (int i : favorite) {
+            penetration[i]++;
+        }
+
+        //创建反图，用于查找只有2个节点时的最长路径
+        List<Integer>[] inverseGraph=new ArrayList[length];
+        Arrays.setAll(inverseGraph,e->new ArrayList<>());
+
+        //创建拓扑排序的拓扑队列，也就是将图中的入度为0的节点放进去
+        //创建反图的过程可以在拓扑排序中完成，这样创建的反图是不包含基环的，遍历的时候更方便
+        Queue<Integer> topologyQueue =new ArrayDeque<>();
+        //但是这只是第一轮，这个相当于只是剪掉最外面的树枝
+        for (int i = 0; i < penetration.length; i++) {
+            if (penetration[i]==0){
+                topologyQueue.add(i);
+            }
+        }
+
+        //循环剪掉树枝，并构建反图
+        while (!topologyQueue.isEmpty()){
+            //获取队列第一个节点
+            Integer x = topologyQueue.poll();
+            //然后看看这个x喜欢了谁
+            int y = favorite[x];
+            //反图记录下y喜欢的人是谁
+            inverseGraph[y].add(x);
+            //接下来顺便看看剪掉x后，y是不是也能剪掉，如果能剪掉，可以把y也放进队列中
+            if (--penetration[y]==0) {
+                //顺便说下，注意这个--penetration[y]，这个操作会对自己进行修改的，--操作
+                topologyQueue.add(y);
+            }
+        }
+
+        // 基环最长为多长
+        int ringMax=1;
+        //接下来就是循环找基环有多长
+        for (int i = 0; i < length; i++) {
+            //当节点的深度为0的的时候，这个节点肯定不是基环其中之一，都没人喜欢他
+            if (penetration[i]==0) {
+                continue;
+            }
+
+            //这段就是找基环了;  一直循环下去，只要有环后面一定是会等于最开始的自己的，所以y!=i才是循环继续往下的关键，当这个y==i了，那就说明环已经结束了
+            //而且这里的开始，一定是基环的开始，为什么呢，因为前面的操作会导致不是基环的节点，深度都是0
+            for (int y=favorite[i]; y!=i;y=favorite[y]){
+                //这段是避免重复访问的，
+                penetration[y] = 0;
+                ringMax++;
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
