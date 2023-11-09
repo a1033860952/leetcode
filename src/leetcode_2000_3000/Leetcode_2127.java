@@ -74,15 +74,22 @@ public class Leetcode_2127 {
             }
         }
 
-        // 基环最长为多长
-        int ringMax=1;
+
+        //基环大于3时会用这个
+        int maxRingSize = 0;
+        //当基环位2时的两边链条的长度
+        int sumChainSize = 0;
+
         //接下来就是循环找基环有多长
         for (int i = 0; i < length; i++) {
-            //当节点的深度为0的的时候，这个节点肯定不是基环其中之一，都没人喜欢他
+            // 基环长度
+            int ringMax=1;
+            //当节点的入度为0的的时候，这个节点肯定不是基环其中之一，都没人喜欢他
             if (penetration[i]==0) {
                 continue;
             }
 
+            //肯定有疑问，为什么找基环的循环要在这个循环里，因为当基环长度为2时，你能知道哪里是基环的开头和结束
             //这段就是找基环了;  一直循环下去，只要有环后面一定是会等于最开始的自己的，所以y!=i才是循环继续往下的关键，当这个y==i了，那就说明环已经结束了
             //而且这里的开始，一定是基环的开始，为什么呢，因为前面的操作会导致不是基环的节点，深度都是0
             for (int y=favorite[i]; y!=i;y=favorite[y]){
@@ -91,50 +98,33 @@ public class Leetcode_2127 {
                 ringMax++;
             }
 
-
+            if (ringMax==2){
+                sumChainSize+=getMaxDepth(i,inverseGraph)+getMaxDepth(favorite[i],inverseGraph);
+            }else{
+                maxRingSize=Math.max(maxRingSize,ringMax);
+            }
 
         }
+        return Math.max(maxRingSize,sumChainSize);
 
 
 
+    }
 
 
+    /**
+     * 获取反图中最深的那条线长度
+     * @param x
+     * @param inverseGraph
+     * @return
+     */
+    private int getMaxDepth(int x,List<Integer>[] inverseGraph){
 
+        int maxDepth=1;
+        for (Integer son : inverseGraph[x]) {
+            maxDepth=Math.max(maxDepth,getMaxDepth(son,inverseGraph)+1);
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        return 0;
-
-
-
+        return maxDepth;
     }
 }

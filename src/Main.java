@@ -1,7 +1,9 @@
 import leetcode_1_1000.Leetcode_187;
 import leetcode_1_1000.Leetcode_318;
 import leetcode_2000_3000.Leetcode_2003;
+import leetcode_2000_3000.Leetcode_2127;
 import leetcode_2000_3000.Leetcode_2586;
+import leetcode_2000_3000.Leetcode_2609;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -23,9 +25,10 @@ public class Main {
         int[][] test={{0,2},{0,5},{2,4},{1,6},{5,4}};
         int[] test2={-1,0,3,5,9,12};
         String[] test1={"1313579440F2036","2921522980M5644"};
-        String testStr="AAAAAAAAAAA";
+        String testStr="111";
 
-
+        Leetcode_2609 leetcode2609=new Leetcode_2609();
+        System.out.println(leetcode2609.findTheLongestBalancedSubstring(testStr));
 
         int[] parent=new int[]{-1,0,1,0,3,3};
         int[] nums=new int[]{5,4,6,2,1,3};
@@ -37,8 +40,7 @@ public class Main {
         String[] stringArray=new String[]{"hey","aeo","mu","ooo","artro"};
 
 
-        Leetcode_2586 leetcode2586=new Leetcode_2586();
-        System.out.println(leetcode2586.vowelStrings(stringArray,1,4));
+        int[] intArray=new int[]{1,2,3,4,5,6,3,8,9,10,11,8};
 
 
 
