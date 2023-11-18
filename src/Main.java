@@ -1,9 +1,5 @@
-import leetcode_1_1000.Leetcode_187;
-import leetcode_1_1000.Leetcode_318;
-import leetcode_2000_3000.Leetcode_2003;
-import leetcode_2000_3000.Leetcode_2127;
-import leetcode_2000_3000.Leetcode_2586;
-import leetcode_2000_3000.Leetcode_2609;
+import leetcode_1_1000.*;
+import leetcode_2000_3000.*;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,21 +23,16 @@ public class Main {
         String[] test1={"1313579440F2036","2921522980M5644"};
         String testStr="111";
 
-        Leetcode_2609 leetcode2609=new Leetcode_2609();
-        System.out.println(leetcode2609.findTheLongestBalancedSubstring(testStr));
-
-        int[] parent=new int[]{-1,0,1,0,3,3};
-        int[] nums=new int[]{5,4,6,2,1,3};
-
-//
-//        Leetcode_2003 leetcode_2003=new Leetcode_2003();
-//        System.out.println(Arrays.toString(leetcode_2003.smallestMissingValueSubtree(parent, nums)));
-
-        String[] stringArray=new String[]{"hey","aeo","mu","ooo","artro"};
 
 
-        int[] intArray=new int[]{1,2,3,4,5,6,3,8,9,10,11,8};
+        int[] spells =new int[]{0,2,1,3};
+        int[] potions =new int[]{8,5,8};
 
+
+        int[] nums  =new int[]{4,6,10,6};
+
+        Leetcode_2342 leetcode2342=new Leetcode_2342();
+        System.out.println(leetcode2342.maximumSum(nums));
 
 
     }

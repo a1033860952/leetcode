@@ -2,14 +2,14 @@ package leetcode_1_1000;
 
 public class Node {
     int val;
-    Node left;
-    Node right;
+    public Node left;
+    public Node right;
 
     Node next;
     Node() {
     }
 
-    Node(int val) {
+    public Node(int val) {
         this.val = val;
     }
 
