@@ -2,6 +2,21 @@ package leetcode_1_1000;
 
 public class Leetcode_142 {
 
+
+    public static void main(String[] args) {
+
+        ListNode listNode1 = new ListNode(-4);
+        ListNode node = new ListNode(2, new ListNode(0, listNode1));
+        ListNode listNode=new ListNode(3,node);
+        listNode1.next=node;
+        Leetcode_142 leetcode142 =new Leetcode_142();
+        leetcode142.detectCycle(listNode);
+
+    }
+
+
+
+
     // https://programmercarl.com/0142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II.html#%E6%80%9D%E8%B7%AF
     //首先我们需要先得到循环内交接的位置，若对x,y,z各代表的意义是什么不知道的话，可以通过上面的地址去看图片
     // 慢指针交接点的位置是 slow=x+y 而快指针交接的位置是fast= n(z+y)+x+y
@@ -14,11 +29,38 @@ public class Leetcode_142 {
 
 
     public ListNode detectCycle(ListNode head) {
+        ListNode fastNode=head;
+        ListNode slowNode=head;
+
+        ListNode relationNode=null;
 
 
+        if (fastNode==null|| fastNode.next==null || fastNode.next.next==null){
+            return null;
+        }
 
 
+        // 先判断是否有环,若有环则获取快指针和满指针的关联节点
+        while(fastNode.next != null && fastNode.next.next != null){
+            fastNode=fastNode.next.next;
+            slowNode=slowNode.next;
+            if (fastNode.equals(slowNode)){
+                relationNode=fastNode;
+                break;
+            }
+        }
 
+        if (relationNode==null){
+            return null;
+        }
+
+        while (true){
+            if (head.equals(relationNode)){
+                return relationNode;
+            }
+            head=head.next;
+            relationNode=relationNode.next;
+        }
 
 
 
