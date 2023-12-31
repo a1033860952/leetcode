@@ -11,6 +11,8 @@ public class Leetcode_1 {
         // 你拿到了a,然后用target-a就能拿到b,然后就可以去看看hahs中存在b吗，如果存在就可以返回了
         // 因为需要返回的是两个数的下标，所以我们需要用法map结构，key就是值，value就是值的下标
 
+
+
         Map<Integer,Integer> map=new HashMap<>();
 
         for (int i = 0; i < nums.length; i++) {
