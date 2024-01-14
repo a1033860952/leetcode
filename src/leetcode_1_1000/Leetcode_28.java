@@ -79,16 +79,8 @@ public class Leetcode_28 {
 
             // 将当前子串的最长相等的前缀和后缀的长度写进前缀表
             nextArray[suffixLocation]=prefixLocation;
-
-
         }
-
-
-
         return nextArray;
-
-
-
     }
 
 }
