@@ -55,7 +55,7 @@ public class Leetcode_28 {
 
         // 首先要明白前缀表是怎么获取的，前缀表记录的是所有子串的最长相等的前缀和后缀的长度
         // 比如拿aabaaf举例吧，它的所有子串就有6个，分别是a,aa,aab,aaba,aabaa,aabaaf
-        // 所以前缀表的长度就是6，值分别是a:0,aa:1,aab:0,aaba:1,aabaa:1,aabaaf:0
+        // 所以前缀表的长度就是6，值分别是a:0,aa:1,aab:0,aaba:1,aabaa:2,aabaaf:0
         // 以上就是这个方法要求的，如果不知道前缀和后缀的定义可以去看看思维导图
 
         // 一开始我们需要定义两个指针，一个指向前缀末尾的位置，一个指向后缀末尾的位置
@@ -64,14 +64,13 @@ public class Leetcode_28 {
         int prefixLocation=0;
         nextArray[0]=prefixLocation;
 
-        // 这一步其实就是循环所有子串,同时也把把它当做后缀指针
+        // 这一步其实就是循环所有子串,并判断字符串的相等前后缀是多少,同时也把把它当做后缀指针
         for (int suffixLocation = 1; suffixLocation < str.length(); suffixLocation++) {
 
             // 当不匹配的时候回退长度
             while (prefixLocation>=1 && str.charAt(prefixLocation)!=str.charAt(suffixLocation)){
                 prefixLocation=nextArray[prefixLocation-1];
             }
-
 
             // 当前缀后缀都相等的时候，前缀加1
             if (str.charAt(prefixLocation)==str.charAt(suffixLocation)){
