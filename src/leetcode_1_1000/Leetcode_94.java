@@ -2,6 +2,7 @@ package leetcode_1_1000;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author tianling
@@ -17,9 +18,35 @@ public class Leetcode_94 {
     }
 
     public List<Integer> inorderTraversal(TreeNode root) {
-        return recursionInorderTraversal(root);
+        // return recursionInorderTraversal(root);
+
+        return iterativeImplementation(root);
+        
     }
 
+    /**
+     * 中序遍历的迭代实现
+     * @param root
+     */
+    private List<Integer> iterativeImplementation(TreeNode root) {
+        List<Integer> resultList=new ArrayList<>();
+        TreeNode node=root;
+        Stack<TreeNode> stack=new Stack<>();
+        while (node!=null || !stack.isEmpty()){
+            while (node!=null){
+                stack.add(node);
+                node=node.left;
+            }
+
+             node=stack.pop();
+             resultList.add(node.val);
+             node=node.right;
+
+        }
+
+        return resultList;
+
+    }
 
 
     private List<Integer> recursionInorderTraversal(TreeNode root) {
