@@ -15,7 +15,6 @@ public class Leetcode_102 {
     public static void main(String[] args) {
         Leetcode_102 leetcode102=new Leetcode_102();
 
-
         TreeNode leftNode=new TreeNode(9);
         TreeNode rightNode=new TreeNode(20,new TreeNode(15),new TreeNode(7));
         TreeNode mainNode=new TreeNode(3,leftNode,rightNode);
