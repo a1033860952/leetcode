@@ -13,7 +13,6 @@ public class Leetcode_112 {
 
 
     public boolean hasPathSum(TreeNode root, int targetSum) {
-        // 这题的想法是使用先序遍历，迭代法
         if (root==null){
             return false;
         }
