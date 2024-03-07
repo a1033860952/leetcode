@@ -57,6 +57,11 @@ public class Leetcode_94 {
         return resultList;
     }
 
+    /**
+     * 中序遍历
+     * @param node
+     * @param resultList
+     */
     private void recursion(TreeNode node, List<Integer> resultList) {
         // 递归结束表示，避免死循环
         if (node==null){
