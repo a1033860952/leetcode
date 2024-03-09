@@ -6,18 +6,18 @@ package leetcode_1_1000;
  * @since 2024/1/24
  */
 public class TreeNode {
-    int val;
+    Integer val;
     TreeNode left;
     TreeNode right;
 
     TreeNode() {
     }
 
-    TreeNode(int val) {
+    public TreeNode(Integer val) {
         this.val = val;
     }
 
-    TreeNode(int val, TreeNode left, TreeNode right) {
+    public TreeNode(Integer val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;
@@ -28,7 +28,7 @@ public class TreeNode {
         return val;
     }
 
-    public void setVal(int val) {
+    public void setVal(Integer val) {
         this.val = val;
     }
 
@@ -47,5 +47,17 @@ public class TreeNode {
     public void setRight(TreeNode right) {
         this.right = right;
     }
+
+
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "val=" + val +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
+
+
 }
 
